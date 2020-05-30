@@ -1,5 +1,6 @@
 package com.barclays.planner.budget.banking.budget;
 
+class Budget {
 	public double actualBudgetAmount;
 	
 	public Budget(double spentAmount, double actualBudgetAmount) {

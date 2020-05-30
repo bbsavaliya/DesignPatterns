@@ -13,7 +13,8 @@ public class MonthlyBudget {
 	}
 	
 	private MonthlyBudgetComputeStrategy findStrategyByItemCategory(ITEMCATEGORY itemcategory) {
-		return this.strategies.
+		//return this.strategies.stream().filter(strategy -> strategy.)
+		return null;
 	}
 	
 	public double computeCharges(List<Item> items) {
@@ -21,5 +22,6 @@ public class MonthlyBudget {
 		this.strategies.stream().iterator().forEachRemaining(strategy -> {
 			strategy.compute(items);
 		});
+		return totalCharges;
 	}
 }
