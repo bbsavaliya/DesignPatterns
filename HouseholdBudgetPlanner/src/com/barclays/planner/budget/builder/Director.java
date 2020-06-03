@@ -1,7 +1,7 @@
-package com.barclays.planner.budget.banking.budget.builder;
+package com.barclays.planner.budget.builder;
 
-import com.barclays.planner.budget.banking.budget.Budget;
-import com.barclays.planner.budget.banking.budget.Duration;
+import com.barclays.planner.budget.Budget;
+import com.barclays.planner.budget.Duration;
 
 public class Director {
 	private final BudgetBuilder builder;

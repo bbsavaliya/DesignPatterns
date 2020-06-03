@@ -1,4 +1,4 @@
-package com.barclays.planner.budget.banking.budget;
+package com.barclays.planner.budget;
 
 import java.util.ArrayList;
 import java.util.List;

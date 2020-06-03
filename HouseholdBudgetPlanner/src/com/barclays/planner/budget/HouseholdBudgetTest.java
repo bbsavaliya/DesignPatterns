@@ -1,8 +1,8 @@
-package com.barclays.planner.budget.banking.budget;
+package com.barclays.planner.budget;
 
-import com.barclays.planner.budget.banking.budget.builder.BudgetBuilder;
-import com.barclays.planner.budget.banking.budget.builder.BudgetBuilderImpl;
-import com.barclays.planner.budget.banking.budget.builder.Director;
+import com.barclays.planner.budget.builder.BudgetBuilder;
+import com.barclays.planner.budget.builder.BudgetBuilderImpl;
+import com.barclays.planner.budget.builder.Director;
 
 public class HouseholdBudgetTest {
 	public static void main(String[] args) {
