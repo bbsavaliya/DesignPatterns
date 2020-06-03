@@ -1,17 +1,38 @@
 package com.barclays.planner.budget.banking.budget;
 
-class Budget {
-	public double actualBudgetAmount;
+public abstract class Budget {
+	private double budgetAmount;
+	private Duration duration;
+	private double spentAmount;
+		
+	public Budget() {
+	}
 	
-	public Budget(double spentAmount, double actualBudgetAmount) {
-		this.actualBudgetAmount = actualBudgetAmount;
+	public double getBudgetAmount() {
+		return budgetAmount;
 	}
 
-	public double getActualBudgetAmount() {
-		return actualBudgetAmount;
+	public Duration getDuration() {
+		return duration;
 	}
 	
-	public void transactAgainstBudget(double spentAmount) {
-		this.actualBudgetAmount = this.actualBudgetAmount - spentAmount;
+	public void setBudgetAmount(double budgetAmount) {
+		this.budgetAmount = budgetAmount;
 	}
+
+	public void setDuration(Duration duration) {
+		this.duration = duration;
+	}
+
+	public void addSpentAmount(double spentAmount) {
+		this.spentAmount = this.spentAmount + spentAmount;
+	}
+	
+	public double getSpentAmount() {
+		return this.spentAmount;
+	}
+	
+	public abstract void add(Budget budget);
+	
+	public abstract double getTotalSpentAmount(Duration durations);
 }

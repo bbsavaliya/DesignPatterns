@@ -1,27 +1,30 @@
 package com.barclays.planner.budget.banking.budget;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-import com.barclays.planner.budget.strategy.MonthlyBudgetComputeStrategy;
-
-public class MonthlyBudget {
-	private final List<MonthlyBudgetComputeStrategy> strategies;
+public class MonthlyBudget extends Budget {
+	private final List<Budget> budgetList;
 	
-	public MonthlyBudget(List<MonthlyBudgetComputeStrategy> strategies) {
-		this.strategies = strategies;
+	public MonthlyBudget() {
+		this.budgetList = new ArrayList<Budget>();
 	}
 	
-	private MonthlyBudgetComputeStrategy findStrategyByItemCategory(ITEMCATEGORY itemcategory) {
-		//return this.strategies.stream().filter(strategy -> strategy.)
-		return null;
+	@Override
+	public void add(Budget budget) {
+		budgetList.add(budget);
 	}
 	
-	public double computeCharges(List<Item> items) {
-		double totalCharges = 0.0;
-		this.strategies.stream().iterator().forEachRemaining(strategy -> {
-			strategy.compute(items);
-		});
-		return totalCharges;
+	public List<Budget> getMonthlyBudgetList() {
+		return budgetList;
+	}
+	
+	@Override
+	public double getTotalSpentAmount(Duration duration) {
+		return this.budgetList.stream()
+				  .filter(
+						  budget -> budget.getDuration().getMonth() == duration.getMonth()
+						 ).mapToDouble(budget -> budget.getSpentAmount())
+					      .sum();
 	}
 }
