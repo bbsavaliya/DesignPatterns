@@ -3,6 +3,7 @@ package com.barclays.inventorymgmt.processor;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 import com.barclays.inventorymgmt.Order;
@@ -11,11 +12,11 @@ import com.barclays.inventorymgmt.Product;
 
 import factory.Inventory;
 
-public class RetailerLevelInventoryProcessor implements Processor<Order> {
-	private final Processor<Order> nextProcessor;
+public class RetailerLevelInventoryProcessor implements Processor {
+	private final Processor nextProcessor;
 	private final Inventory inventory;
 	
-	public RetailerLevelInventoryProcessor(Processor<Order> nextProcessor, Inventory inventory) {
+	public RetailerLevelInventoryProcessor(Processor nextProcessor, Inventory inventory) {
 		this.nextProcessor = nextProcessor;
 		this.inventory = inventory;
 	}
@@ -43,16 +44,19 @@ public class RetailerLevelInventoryProcessor implements Processor<Order> {
 
 			if (inventoryQuantity >= demandedQuantity) {
 				fulfilledStock.put(demandedProduct, demandedQuantity);
+				return new OrderStatus(order.getOrderId(), "Fullfilled", order.getDemandedProductList(),fulfilledStock);
 			} else if (inventoryQuantity < demandedQuantity) {
 				shortageStock.put(demandedProduct, demandedQuantity - inventoryQuantity);
-				shortageOrder = new Order(50, shortageStock);
+				shortageOrder = new Order(new Random().nextInt(), shortageStock);
 			}
 		}
 
 		if (shortageOrder != null && nextProcessor != null) {
-			return nextProcessor.process(shortageOrder);
-		} else {
-			return new OrderStatus(order.getOrderId(), "Fullfilled", order.getDemandedProductList(),fulfilledStock);
+			OrderStatus orderStatus = nextProcessor.process(shortageOrder);
+			if(orderStatus.getOrderStatus().equals("Fulfilled")) {
+				return new OrderStatus(order.getOrderId(), "Fullfilled", order.getDemandedProductList(),fulfilledStock);
+			}
 		}
+		return new OrderStatus(order.getOrderId(), "Not Fullfilled", order.getDemandedProductList(),fulfilledStock);
 	}
 }
