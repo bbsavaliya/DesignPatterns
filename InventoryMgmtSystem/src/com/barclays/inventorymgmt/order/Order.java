@@ -1,12 +1,14 @@
-package com.barclays.inventorymgmt;
+package com.barclays.inventorymgmt.order;
 
-import java.util.Map;
+import java.util.List;
+
+import com.barclays.inventorymgmt.order.product.Item;
 
 public class Order {
 	private long orderId;
-	private Map<Product, Integer> demandedProductList;
+	private List<Item> demandedProductList;
 	
-	public Order(long orderId, Map<Product, Integer> demandedProductList) {
+	public Order(long orderId, List<Item> demandedProductList) {
 		this.orderId = orderId;
 		this.demandedProductList = demandedProductList;
 	}
@@ -15,7 +17,7 @@ public class Order {
 		return orderId;
 	}
 
-	public Map<Product, Integer> getDemandedProductList() {
+	public List<Item> getDemandedProductList() {
 		return demandedProductList;
 	}
 
