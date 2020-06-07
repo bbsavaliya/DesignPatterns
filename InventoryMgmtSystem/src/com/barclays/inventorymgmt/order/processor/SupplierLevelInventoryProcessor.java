@@ -1,14 +1,8 @@
 package com.barclays.inventorymgmt.order.processor;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.barclays.inventorymgmt.order.Order;
-import com.barclays.inventorymgmt.order.OrderStatus;
 import com.barclays.inventorymgmt.order.OrderStatusCategory;
 import com.barclays.inventorymgmt.order.product.Inventory;
-import com.barclays.inventorymgmt.order.product.InventoryProduct;
-import com.barclays.inventorymgmt.order.product.Item;
 
 public class SupplierLevelInventoryProcessor implements Processor {
 	private final Processor nextProcessor;
@@ -20,15 +14,15 @@ public class SupplierLevelInventoryProcessor implements Processor {
 	}
 	
 	@Override
-	public OrderStatus process(final Order order) {
-		List<Item> shortageItemList = new ArrayList<>();
-		List<InventoryProduct> fulfilledProductList = new ArrayList<>();
-		this.inventory.processInventoryOrder(order.getDemandedProductList(), shortageItemList, fulfilledProductList);
+	public Order process(final Order order) {
+		this.inventory.processInventoryOrder(order);
 		
-		if(!shortageItemList.isEmpty()) {
-			return new OrderStatus(order.getOrderId(), OrderStatusCategory.PARTIALLY_FULFILLED , order.getDemandedProductList() , fulfilledProductList);
-		} 
+		if(!order.isOrderFullFilled()) {
+			order.setOrderStatus(OrderStatusCategory.PARTIALLY_FULFILLED);
+			return order;
+		}
 		
-		return new OrderStatus(order.getOrderId(), OrderStatusCategory.FULFILLED, order.getDemandedProductList(), fulfilledProductList);
+		order.setOrderStatus(OrderStatusCategory.FULFILLED);
+		return order;
 	}
 }

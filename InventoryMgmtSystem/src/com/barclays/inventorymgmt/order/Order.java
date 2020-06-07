@@ -6,23 +6,36 @@ import com.barclays.inventorymgmt.order.product.Item;
 
 public class Order {
 	private long orderId;
-	private List<Item> demandedProductList;
+	private OrderStatusCategory orderStatus;
+	private List<Item> demandedItems;
 	
 	public Order(long orderId, List<Item> demandedProductList) {
 		this.orderId = orderId;
-		this.demandedProductList = demandedProductList;
+		this.demandedItems = demandedProductList;
 	}
 
 	public long getOrderId() {
 		return orderId;
 	}
 
-	public List<Item> getDemandedProductList() {
-		return demandedProductList;
+	public List<Item> getDemandedItems() {
+		return demandedItems;
+	}
+
+	public OrderStatusCategory getOrderStatus() {
+		return orderStatus;
+	}
+
+	public void setOrderStatus(OrderStatusCategory orderStatus) {
+		this.orderStatus = orderStatus;
 	}
 
 	@Override
 	public String toString() {
-		return "Order [orderId=" + orderId + ", demandedProductList=" + demandedProductList + "]";
+		return "Order [orderId=" + orderId + ", orderStatus=" + orderStatus + ", demandedItems=" + demandedItems + "]";
+	}
+
+	public boolean isOrderFullFilled() {
+		return this.demandedItems.stream().anyMatch(demandedItem -> demandedItem.getDemandedQuantity() == 0);
 	}
 }

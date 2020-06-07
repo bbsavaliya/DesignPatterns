@@ -1,16 +1,20 @@
 package com.barclays.inventorymgmt.order.product;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import com.barclays.inventorymgmt.order.Order;
 
 public class Inventory {
 	private List<InventoryProduct> inventoryProductList;
 	
 	public Inventory() {
+		this.inventoryProductList = new ArrayList<InventoryProduct>();
 	}
 	
-	public void add(List<InventoryProduct> inventoryProductList) {
-		this.inventoryProductList = inventoryProductList;
+	public void addInventory(InventoryProduct inventoryProduct) {
+		this.inventoryProductList.add(inventoryProduct);
 	}
 	
 	private InventoryProduct findProdectByItem(Item item) {
@@ -20,17 +24,16 @@ public class Inventory {
 										).collect(Collectors.toList()).get(0);
 	}
 	
-	public void processInventoryOrder(List<Item> demandedProductList, List<Item> shortageItemList, List<InventoryProduct> fulfilledProductList) {
-		InventoryProduct inventoryProduct = null;
-		
-		for(Item item : demandedProductList) {
-			inventoryProduct = this.findProdectByItem(item);
-			if(item.getQuantity() > inventoryProduct.getQuantity()) {
-				shortageItemList.add(new Item(item.getName(), item.getBrand(), item.getQuantity() - inventoryProduct.getQuantity()));
-				fulfilledProductList.add(new InventoryProduct(inventoryProduct.getName(), inventoryProduct.getQuantity(), inventoryProduct.getBrand(), inventoryProduct.getDescription()));
+	public void processInventoryOrder(final Order order) {
+		order.getDemandedItems().stream().filter(demandedItem -> demandedItem.getDemandedQuantity() > 0).forEach(demandedItem -> {
+			final InventoryProduct inventoryProduct = this.findProdectByItem(demandedItem);
+			if(inventoryProduct.getQuantity() >= demandedItem.getDemandedQuantity()) {
+				demandedItem.setFullfilledQuantity(demandedItem.getFullfilledQuantity() + demandedItem.getDemandedQuantity());
+				demandedItem.setDemandedQuantity(0);
 			} else {
-				fulfilledProductList.add(new InventoryProduct(inventoryProduct.getName(), item.getQuantity(), inventoryProduct.getBrand(), inventoryProduct.getDescription()));
+				demandedItem.setDemandedQuantity(demandedItem.getDemandedQuantity() - inventoryProduct.getQuantity());
+				demandedItem.setFullfilledQuantity(demandedItem.getFullfilledQuantity() + inventoryProduct.getQuantity());
 			}
-		}		
+		});
 	}
 }
