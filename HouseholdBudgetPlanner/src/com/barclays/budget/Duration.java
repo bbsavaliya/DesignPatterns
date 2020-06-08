@@ -1,4 +1,4 @@
-package com.barclays.planner.budget;
+package com.barclays.budget;
 
 public class Duration {
 	private final int month;

@@ -1,4 +1,4 @@
-package com.barclays.planner.budget;
+package com.barclays.budget;
 
 public enum BudgetCategory {
 	HOUSEHOLD,
