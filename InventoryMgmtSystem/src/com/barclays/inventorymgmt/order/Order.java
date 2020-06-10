@@ -36,6 +36,6 @@ public class Order {
 	}
 
 	public boolean isOrderFullFilled() {
-		return this.demandedItems.stream().anyMatch(demandedItem -> demandedItem.getDemandedQuantity() == 0);
+		return !(this.demandedItems.stream().anyMatch(demandedItem -> demandedItem.getDemandedQuantity() - demandedItem.getFullfilledQuantity() > 0));
 	}
 }

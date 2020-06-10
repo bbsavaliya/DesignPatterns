@@ -3,14 +3,13 @@ package com.barclays.inventorymgmt.order.product;
 public class Item {
 	private final String name;
 	private final String brand;
-	private final int actualQuantity;
 	private int demandedQuantity;
 	private int fullfilledQuantity;
 	
-	public Item(String name, String brand, int actualQuantity) {
+	public Item(String name, String brand, int demandedQuantity) {
 		this.name = name;
 		this.brand = brand;
-		this.actualQuantity = this.demandedQuantity = actualQuantity;
+		this.demandedQuantity = demandedQuantity;
 	}
 
 	public String getName() {
@@ -21,10 +20,6 @@ public class Item {
 		return brand;
 	}
 	
-	public int getActualQuantity() {
-		return actualQuantity;
-	}
-
 	public int getDemandedQuantity() {
 		return demandedQuantity;
 	}
@@ -43,7 +38,7 @@ public class Item {
 
 	@Override
 	public String toString() {
-		return "Item [name=" + name + ", brand=" + brand + ", actualQuantity=" + actualQuantity + ", demandedQuantity="
+		return "Item [name=" + name + ", brand=" + brand + ", demandedQuantity="
 				+ demandedQuantity + ", fullfilledQuantity=" + fullfilledQuantity + "]";
 	}
 }

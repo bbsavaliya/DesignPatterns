@@ -27,11 +27,11 @@ public class Inventory {
 	public void processInventoryOrder(final Order order) {
 		order.getDemandedItems().stream().filter(demandedItem -> demandedItem.getDemandedQuantity() > 0).forEach(demandedItem -> {
 			final InventoryProduct inventoryProduct = this.findProdectByItem(demandedItem);
-			if(inventoryProduct.getQuantity() >= demandedItem.getDemandedQuantity()) {
-				demandedItem.setFullfilledQuantity(demandedItem.getFullfilledQuantity() + demandedItem.getDemandedQuantity());
-				demandedItem.setDemandedQuantity(0);
+			final int remainingFulfilledQuantity = demandedItem.getDemandedQuantity() - demandedItem.getFullfilledQuantity();
+			
+			if(inventoryProduct.getQuantity() >= remainingFulfilledQuantity) {
+				demandedItem.setFullfilledQuantity(remainingFulfilledQuantity);
 			} else {
-				demandedItem.setDemandedQuantity(demandedItem.getDemandedQuantity() - inventoryProduct.getQuantity());
 				demandedItem.setFullfilledQuantity(demandedItem.getFullfilledQuantity() + inventoryProduct.getQuantity());
 			}
 		});
