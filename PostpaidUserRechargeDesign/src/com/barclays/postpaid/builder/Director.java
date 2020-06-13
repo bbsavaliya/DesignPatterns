@@ -1,9 +1,9 @@
 package com.barclays.postpaid.builder;
 
-import com.barclays.postpaid.component.InternetData;
-import com.barclays.postpaid.component.LocalMin;
 import com.barclays.postpaid.component.RechargePack;
-import com.barclays.postpaid.component.STDMin;
+import com.barclays.postpaid.strategy.InternetData;
+import com.barclays.postpaid.strategy.LocalMin;
+import com.barclays.postpaid.strategy.STDMin;
 
 public class Director {
 	private final Builder builder;

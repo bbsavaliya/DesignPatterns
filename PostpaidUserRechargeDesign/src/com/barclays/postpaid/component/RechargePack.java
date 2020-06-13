@@ -1,5 +1,9 @@
 package com.barclays.postpaid.component;
 
+import com.barclays.postpaid.strategy.InternetData;
+import com.barclays.postpaid.strategy.LocalMin;
+import com.barclays.postpaid.strategy.STDMin;
+
 public class RechargePack {
 	private final LocalMin localMins;
 	private final STDMin stdMins;

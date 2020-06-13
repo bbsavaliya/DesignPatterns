@@ -1,6 +1,6 @@
-package com.barclays.postpaid.component;
+package com.barclays.postpaid.strategy;
 
-import com.barclays.postpaid.strategy.Billing;
+import com.barclays.postpaid.component.Usage;
 
 public class STDMin implements Billing {
 	private final int stdMins;
