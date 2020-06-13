@@ -1,12 +1,16 @@
 package com.barclays.interestrate.account;
 
-public abstract class Account {
+import com.barclays.interestrate.slabs.InterestRateSlabRule;
+
+public class Account {
 	private final long accountId;
 	private final double balance;
+	private Double[] monthlyAverageBalance;
 	
 	public Account(long accountId, double balance) {
 		this.accountId = accountId;
 		this.balance = balance;
+		monthlyAverageBalance = new Double[31];
 	}
 
 	public long getAccountId() {
@@ -15,5 +19,16 @@ public abstract class Account {
 
 	public double getBalance() {
 		return balance;
+	}
+	
+	public Double[] getMonthlyAverageBalance() {
+		for(int i=0;i<31;i++) {
+			monthlyAverageBalance[i] = Math.random() * (50000 - 10000) + 10000;
+		}
+		return monthlyAverageBalance;
+	}
+
+	public double calculateInterest(double balance, InterestRateSlabRule interestRateSlabRule) {
+		return interestRateSlabRule.calculateInterest(balance);
 	}
 }
