@@ -3,11 +3,18 @@ package com.barclays.interestrate.account;
 import com.barclays.interestrate.slabs.InterestRateSlabRule;
 
 public class CurrentAccount extends Account {
-	public CurrentAccount(long accountId, double balance) {
+	private final InterestRateSlabRule interestRateSlabRule;
+	public CurrentAccount(long accountId, double balance, InterestRateSlabRule interestRateSlabRule) {
 		super(accountId, balance);
+		this.interestRateSlabRule = interestRateSlabRule;
 	}
 
-	public double calculateInterest(double balance, InterestRateSlabRule interestRateSlabRule) {
-		return interestRateSlabRule.calculateInterest(balance);
+	public InterestRateSlabRule getInterestRateSlabRule() {
+		return interestRateSlabRule;
+	}
+
+	@Override
+	public double calculateInterest() {
+		return this.interestRateSlabRule.calculateInterest(this.getAverageBalance());
 	}
 }

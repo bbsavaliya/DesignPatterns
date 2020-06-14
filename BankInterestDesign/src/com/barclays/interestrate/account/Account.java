@@ -1,8 +1,8 @@
 package com.barclays.interestrate.account;
 
-import com.barclays.interestrate.slabs.InterestRateSlabRule;
+import java.util.Arrays;
 
-public class Account {
+public abstract class Account {
 	private final long accountId;
 	private final double balance;
 	private Double[] monthlyAverageBalance;
@@ -27,8 +27,12 @@ public class Account {
 		}
 		return monthlyAverageBalance;
 	}
-
-	public double calculateInterest(double balance, InterestRateSlabRule interestRateSlabRule) {
-		return interestRateSlabRule.calculateInterest(balance);
+	
+	public double getAverageBalance() {
+		return Arrays.stream(this.getMonthlyAverageBalance())
+					.collect(AverageBalance::new, AverageBalance::accept, AverageBalance::combine)
+					.average();
 	}
+
+	public abstract double calculateInterest();
 }

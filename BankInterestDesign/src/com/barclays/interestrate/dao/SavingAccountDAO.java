@@ -5,18 +5,23 @@ import java.util.Map;
 
 import com.barclays.interestrate.account.Account;
 import com.barclays.interestrate.account.SavingAccount;
+import com.barclays.interestrate.slabs.InterestRateSlabRule;
 
 public class SavingAccountDAO extends AccountDAO {
-	private final static Map<Long, Account> accountMap;
+	private final Map<Long, Account> accountMap;
 	
-	static {
-		accountMap = new HashMap<>();
-		accountMap.put(1L, new SavingAccount(1L, 15000));
-		accountMap.put(2L, new SavingAccount(2L, 20000));
+	public SavingAccountDAO() {
+		this.accountMap = new HashMap<>();
 	}
 	
 	@Override
 	public Account findByAccountId(long accountId) {
-		return accountMap.get(accountId);
+		return this.accountMap.get(accountId);
+	}
+
+	@Override
+	public void create(InterestRateSlabRule interestRateSlabRule) {
+		this.accountMap.put(1L, new SavingAccount(1L, 15000, interestRateSlabRule));
+		this.accountMap.put(2L, new SavingAccount(2L, 20000, interestRateSlabRule));
 	}
 }
