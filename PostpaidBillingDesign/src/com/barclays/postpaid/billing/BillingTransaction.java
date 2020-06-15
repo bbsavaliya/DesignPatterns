@@ -1,40 +1,46 @@
 package com.barclays.postpaid.billing;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDateTime;
+
+import com.barclays.postpaid.composite.RechargeComponentType;
 
 public class BillingTransaction {
-	private List<LocalMinuteSession> localMinuteSessions;
-	private List<STDMinutesSession> stdMinutesSessions;
-	private List<InternetDataSession> internetDataSessions;
+	private RechargeComponentType rechargeComponentType;
+	private LocalDateTime sessionStartTime;
+	private LocalDateTime sessionEndTime;
+	private int totalSessionTime;
 	
-	public BillingTransaction() {
-		this.localMinuteSessions = new ArrayList<>();
-		this.stdMinutesSessions = new ArrayList<>();
-		this.internetDataSessions = new ArrayList<>();
+	public BillingTransaction(RechargeComponentType rechargeComponentType) {
+		this.rechargeComponentType = rechargeComponentType;
 	}
 	
-	public void addLocalMinutesUsage(LocalMinuteSession localMinuteSession) {
-		this.localMinuteSessions.add(localMinuteSession);
+	public void startSession() {
+		this.sessionStartTime = LocalDateTime.now();
 	}
 	
-	public void addSTDMinutesUsage(STDMinutesSession stdMinutesSession) {
-		this.stdMinutesSessions.add(stdMinutesSession);
-	}
-	
-	public void addInternetDataUsage(InternetDataSession internetDataSession) {
-		this.internetDataSessions.add(internetDataSession);
+	public void endSession() {
+		this.sessionEndTime = LocalDateTime.now();
+		this.totalSessionTime = this.sessionEndTime.getSecond() - this.sessionStartTime.getSecond();
+		
+		// Testing  puropse
+		if(this.totalSessionTime < 1) {
+			this.totalSessionTime = 1;
+		}
 	}
 
-	public List<LocalMinuteSession> getLocalMinuteSessions() {
-		return localMinuteSessions;
+	public LocalDateTime getSessionStartTime() {
+		return sessionStartTime;
 	}
 
-	public List<STDMinutesSession> getStdMinutesSessions() {
-		return stdMinutesSessions;
+	public LocalDateTime getSessionEndTime() {
+		return sessionEndTime;
 	}
 
-	public List<InternetDataSession> getInternetDataSessions() {
-		return internetDataSessions;
+	public int getTotalSessionTime() {
+		return totalSessionTime;
+	}
+
+	public RechargeComponentType getRechargeComponentType() {
+		return rechargeComponentType;
 	}
 }

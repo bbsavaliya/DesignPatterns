@@ -3,8 +3,9 @@ package com.barclays.postpaid.composite;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecharchPack extends ValuePackComponent {
+public class RecharchPack {
 	private List<ValuePackComponent> valuePack;
+	private double basePrice;
 	
 	public RecharchPack() {
 		this.valuePack = new ArrayList<ValuePackComponent>();
@@ -16,5 +17,13 @@ public class RecharchPack extends ValuePackComponent {
 
 	public List<ValuePackComponent> getValuePack() {
 		return valuePack;
+	}
+	
+	public double getBasePrice() {
+		return basePrice;
+	}
+
+	public void setBasePrice(double basePrice) {
+		this.basePrice = basePrice;
 	}
 }

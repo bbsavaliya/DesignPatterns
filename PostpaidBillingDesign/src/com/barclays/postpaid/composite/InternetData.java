@@ -11,15 +11,18 @@ public class InternetData extends ValuePackComponent {
 		this.rechargeComponentType = rechargeComponentType;
 	}
 	
-	public int getInternetData() {
-		return internetData;
-	}
-
-	public double getInternetDataExtraCharge() {
-		return internetDataExtraCharge;
-	}
-
+	@Override
 	public RechargeComponentType getRechargeComponentType() {
 		return rechargeComponentType;
+	}
+
+	@Override
+	public int getFreeMinutes() {
+		return this.internetData;
+	}
+
+	@Override
+	public double getExtraCharge() {
+		return this.internetDataExtraCharge;
 	}
 }

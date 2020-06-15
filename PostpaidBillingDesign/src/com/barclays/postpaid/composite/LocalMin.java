@@ -10,16 +10,19 @@ public class LocalMin extends ValuePackComponent {
 		this.localMinExtraCharge = localMinExtraCharge;
 		this.rechargeComponentType = rechargeComponentType;
 	}
-	
-	public int getLocalMins() {
-		return localMins;
-	}
 
-	public double getLocalMinExtraCharge() {
-		return localMinExtraCharge;
-	}
-
+	@Override
 	public RechargeComponentType getRechargeComponentType() {
 		return rechargeComponentType;
+	}
+
+	@Override
+	public int getFreeMinutes() {
+		return this.localMins;
+	}
+
+	@Override
+	public double getExtraCharge() {
+		return this.localMinExtraCharge;
 	}
 }

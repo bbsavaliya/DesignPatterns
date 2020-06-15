@@ -10,16 +10,19 @@ public class STDMin extends ValuePackComponent {
 		this.stdMinExtraCharge = stdMinExtraCharge;
 		this.rechargeComponentType = rechargeComponentType;
 	}
-	
-	public int getStdMins() {
-		return stdMins;
-	}
 
-	public double getStdMinExtraCharge() {
-		return stdMinExtraCharge;
-	}
-
+	@Override
 	public RechargeComponentType getRechargeComponentType() {
 		return rechargeComponentType;
+	}
+
+	@Override
+	public int getFreeMinutes() {
+		return this.stdMins;
+	}
+
+	@Override
+	public double getExtraCharge() {
+		return this.stdMinExtraCharge;
 	}
 }
