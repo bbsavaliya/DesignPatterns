@@ -1,5 +1,8 @@
 package com.barclays.budget.builder;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public enum Quater {
 	FIRST_QUATER(4, 6),
 	SECOND_QUATER(7, 9),
@@ -8,7 +11,15 @@ public enum Quater {
 	
 	private final int quaterStart;
 	private final int quaterEnd;
-
+	private static final Map<Integer, Quater> quaterMapByStart;
+	
+	static {
+		quaterMapByStart = new HashMap<Integer, Quater>();
+		for(Quater quater: Quater.values()) {
+			quaterMapByStart.put(quater.getQuaterStart(), quater);
+		}
+	}
+	
 	private Quater(int quaterStart, int quaterEnd) {
 		this.quaterStart = quaterStart;
 		this.quaterEnd = quaterEnd;
@@ -22,7 +33,7 @@ public enum Quater {
 		return quaterEnd;
 	}
 	
-	public Quater getQuaterFromStart(int quatertart) {
-		return null;
+	public static Quater getQuaterFromStart(int quaterStart) {
+		return quaterMapByStart.get(quaterStart);
 	}
 }

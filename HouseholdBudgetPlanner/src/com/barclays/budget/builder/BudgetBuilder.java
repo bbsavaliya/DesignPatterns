@@ -13,7 +13,7 @@ public class BudgetBuilder implements Builder {
 	
 	@Override
 	public Builder addBudget(Budget budget) {
-		this.monthlyBudget.addBudget(budget);
+		this.monthlyBudget.add(budget);
 		return this;
 	}
 	

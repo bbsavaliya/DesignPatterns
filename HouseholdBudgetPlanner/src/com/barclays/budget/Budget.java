@@ -1,13 +1,19 @@
 package com.barclays.budget;
 
-public class Budget {
-	private final double budgetAmount;
-	private final BudgetCategory budgetCategory;
+public abstract class Budget {
+	private double budgetAmount;
+	private BudgetCategory budgetCategory;
 	private double totalSpentAmount;
+	private Duration duration;
 	
-	public Budget(double budgetAmount, BudgetCategory budgetCategory) {
+	public Budget() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Budget(double budgetAmount, BudgetCategory budgetCategory, Duration duration) {
 		this.budgetAmount = budgetAmount;
 		this.budgetCategory = budgetCategory;
+		this.duration = duration;
 	}
 	
 	public double getBudgetAmount() {
@@ -16,6 +22,10 @@ public class Budget {
 	
 	public BudgetCategory getBudgetCategory() {
 		return budgetCategory;
+	}
+	
+	public Duration getDuration() {
+		return duration;
 	}
 
 	public double getRemainingBudgetAmount() {
@@ -29,4 +39,10 @@ public class Budget {
 	public void addSpentOnBudget(double spentAmount) {
 		this.totalSpentAmount = this.totalSpentAmount + spentAmount;
 	}
+	
+	public abstract void add(Budget budget);
+	
+	public abstract double getTotalBudgetAmount(Duration duration);
+	
+	public abstract double getTotalSpentAmount(Duration duration);
 }

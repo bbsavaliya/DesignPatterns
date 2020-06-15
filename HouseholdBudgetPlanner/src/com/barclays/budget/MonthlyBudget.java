@@ -4,26 +4,27 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class MonthlyBudget {
-	private final List<Budget> monthlyBudget;
+public class MonthlyBudget extends Budget {
+	private List<Budget> monthlyBudget;
 	private Duration duration;
 	
 	public MonthlyBudget() {
 		this.monthlyBudget = new ArrayList<>();
 	}
 	
-	public List<Budget> getMonthlyBudgetList() {
-		return monthlyBudget;
+	public MonthlyBudget(double budgetAmount, BudgetCategory budgetCategory, Duration duration) {
+		super(budgetAmount, budgetCategory, duration);
 	}
 	
-	public void addBudget(Budget budget) {
-		this.monthlyBudget.add(budget);
+	public List<Budget> getMonthlyBudgetList() {
+		return monthlyBudget;
 	}
 	
 	public void setDuration(Duration duration) {
 		this.duration = duration;
 	}
-
+	
+	@Override
 	public Duration getDuration() {
 		return duration;
 	}
@@ -36,12 +37,22 @@ public class MonthlyBudget {
 						  .addSpentOnBudget(spentAmount);
 	}
 	
-	public double getTotalBudgetAmount() {
+	@Override
+	public void add(Budget budget) {
+		this.monthlyBudget.add(budget);
+	}
+	
+	@Override
+	public double getTotalBudgetAmount(Duration duration) {
 		return this.monthlyBudget.stream()
+								 .filter(budget -> budget.getDuration().getMonth() == duration.getMonth() &&
+										 	budget.getDuration().getYear() == duration.getYear()
+										 )
 								 .mapToDouble(budget -> budget.getBudgetAmount())
 								 .sum();
 	}
 
+	@Override
 	public double getTotalSpentAmount(Duration duration) {
 		return this.monthlyBudget
 				   .stream()
