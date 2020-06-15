@@ -1,6 +1,7 @@
 package com.barclays.postpaid.billing;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 import com.barclays.postpaid.composite.RechargeComponentType;
 
@@ -19,13 +20,8 @@ public class BillingTransaction {
 	}
 	
 	public void endSession() {
-		this.sessionEndTime = LocalDateTime.now();
-		this.totalSessionTime = this.sessionEndTime.getSecond() - this.sessionStartTime.getSecond();
-		
-		// Testing  puropse
-		if(this.totalSessionTime < 1) {
-			this.totalSessionTime = 1;
-		}
+		this.sessionEndTime = LocalDateTime.now().plusSeconds(100);
+		this.totalSessionTime = (int) ChronoUnit.SECONDS.between(this.sessionStartTime, this.sessionEndTime);
 	}
 
 	public LocalDateTime getSessionStartTime() {

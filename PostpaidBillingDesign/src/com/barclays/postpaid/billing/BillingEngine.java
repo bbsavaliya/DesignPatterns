@@ -1,9 +1,7 @@
 package com.barclays.postpaid.billing;
 
-import java.time.LocalDateTime;
-
-import com.barclays.postpaid.composite.RecharchPack;
+import java.time.LocalDate;
 
 public interface BillingEngine {
-	public double processBilling(final RecharchPack recharchPack, LocalDateTime localDateTime);
+	public double processBilling(LocalDate startDate, LocalDate endDate);
 }
