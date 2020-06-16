@@ -1,7 +1,7 @@
-package com.barclays.interestrate.dao;
+package com.design.interestrate.dao;
 
-import com.barclays.interestrate.account.Account;
-import com.barclays.interestrate.slabs.InterestRateSlabRule;
+import com.design.interestrate.account.Account;
+import com.design.interestrate.slabs.InterestRateSlabRule;
 
 public abstract class AccountDAO {
 	private static final AccountDAO accountDAO = new SavingAccountDAO();

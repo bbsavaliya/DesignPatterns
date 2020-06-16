@@ -1,6 +1,6 @@
-package com.barclays.interestrate.account;
+package com.design.interestrate.account;
 
-import com.barclays.interestrate.slabs.InterestRateSlabRule;
+import com.design.interestrate.slabs.InterestRateSlabRule;
 
 public class CurrentAccount extends Account {
 	private final InterestRateSlabRule interestRateSlabRule;

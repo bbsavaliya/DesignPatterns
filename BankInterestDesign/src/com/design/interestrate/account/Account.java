@@ -1,4 +1,4 @@
-package com.barclays.interestrate.account;
+package com.design.interestrate.account;
 
 import java.util.Arrays;
 

@@ -1,10 +1,10 @@
-package com.barclays.interestrate.slabs;
+package com.design.interestrate.slabs;
 
 import java.util.List;
 
-public class CorporateAccountInterestRateSlabRule extends InterestRateSlabRule {
+public class CurrentAccountInterestRateSlabRule extends InterestRateSlabRule {
 
-	public CorporateAccountInterestRateSlabRule(List<InterestRateSlab> interestRateSlabs) {
+	public CurrentAccountInterestRateSlabRule(List<InterestRateSlab> interestRateSlabs) {
 		super(interestRateSlabs);
 	}
 	

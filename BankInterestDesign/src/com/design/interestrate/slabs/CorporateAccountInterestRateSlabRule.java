@@ -1,13 +1,12 @@
-package com.barclays.interestrate.slabs;
+package com.design.interestrate.slabs;
 
 import java.util.List;
 
-public class SavingAccountInterestRateSlabRule extends InterestRateSlabRule {
+public class CorporateAccountInterestRateSlabRule extends InterestRateSlabRule {
 
-	public SavingAccountInterestRateSlabRule(List<InterestRateSlab> interestRateSlabs) {
+	public CorporateAccountInterestRateSlabRule(List<InterestRateSlab> interestRateSlabs) {
 		super(interestRateSlabs);
 	}
-	
 	
 	@Override
 	public double calculateInterest(double balance) {

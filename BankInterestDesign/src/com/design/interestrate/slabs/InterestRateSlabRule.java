@@ -1,4 +1,4 @@
-package com.barclays.interestrate.slabs;
+package com.design.interestrate.slabs;
 
 import java.util.List;
 import java.util.stream.Collectors;

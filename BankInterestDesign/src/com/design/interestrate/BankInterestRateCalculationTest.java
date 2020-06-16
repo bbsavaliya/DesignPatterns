@@ -1,9 +1,9 @@
-package com.barclays.interestrate;
+package com.design.interestrate;
 
-import com.barclays.interestrate.account.Account;
-import com.barclays.interestrate.dao.AccountDAO;
-import com.barclays.interestrate.factory.AccountFactory;
-import com.barclays.interestrate.factory.SavingAccountFactory;
+import com.design.interestrate.account.Account;
+import com.design.interestrate.dao.AccountDAO;
+import com.design.interestrate.factory.AccountFactory;
+import com.design.interestrate.factory.SavingAccountFactory;
 
 public class BankInterestRateCalculationTest {
 	public static void main(String[] args) {

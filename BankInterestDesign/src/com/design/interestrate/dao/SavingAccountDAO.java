@@ -1,11 +1,11 @@
-package com.barclays.interestrate.dao;
+package com.design.interestrate.dao;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import com.barclays.interestrate.account.Account;
-import com.barclays.interestrate.account.SavingAccount;
-import com.barclays.interestrate.slabs.InterestRateSlabRule;
+import com.design.interestrate.account.Account;
+import com.design.interestrate.account.SavingAccount;
+import com.design.interestrate.slabs.InterestRateSlabRule;
 
 public class SavingAccountDAO extends AccountDAO {
 	private final Map<Long, Account> accountMap;

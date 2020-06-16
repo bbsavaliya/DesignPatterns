@@ -1,6 +1,6 @@
-package com.barclays.interestrate.factory;
+package com.design.interestrate.factory;
 
-import com.barclays.interestrate.dao.AccountDAO;
+import com.design.interestrate.dao.AccountDAO;
 
 public class SavingAccountFactory implements AccountFactory {
 	AccountDAO accountDAO = AccountDAO.getInstance();

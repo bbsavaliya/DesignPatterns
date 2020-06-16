@@ -1,4 +1,4 @@
-package com.barclays.interestrate.slabs;
+package com.design.interestrate.slabs;
 
 public class InterestRateSlab {
 	private final double minBalance;

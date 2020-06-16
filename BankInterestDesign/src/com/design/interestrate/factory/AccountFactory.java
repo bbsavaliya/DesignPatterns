@@ -1,4 +1,4 @@
-package com.barclays.interestrate.factory;
+package com.design.interestrate.factory;
 
 public interface AccountFactory {
 	public void createAccount();

@@ -1,11 +1,11 @@
-package com.barclays.interestrate.factory;
+package com.design.interestrate.factory;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.barclays.interestrate.slabs.CurrentAccountInterestRateSlabRule;
-import com.barclays.interestrate.slabs.InterestRateSlab;
-import com.barclays.interestrate.slabs.InterestRateSlabRule;
+import com.design.interestrate.slabs.CurrentAccountInterestRateSlabRule;
+import com.design.interestrate.slabs.InterestRateSlab;
+import com.design.interestrate.slabs.InterestRateSlabRule;
 
 public class CurrentAccountInterestRateSlabeRuleFactory implements InterestRateSlabRuleFactory {
 
