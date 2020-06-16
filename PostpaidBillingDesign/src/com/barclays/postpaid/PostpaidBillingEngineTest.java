@@ -3,7 +3,6 @@ package com.barclays.postpaid;
 import java.time.LocalDate;
 
 import com.barclays.postpaid.billing.CustomerBilling;
-import com.barclays.postpaid.billing.PostpaidBillingEngine;
 import com.barclays.postpaid.builder.RechargePackBuilder;
 import com.barclays.postpaid.builder.RechargePackDirector;
 import com.barclays.postpaid.composite.RecharchPack;
@@ -18,11 +17,10 @@ public class PostpaidBillingEngineTest {
 		BillingUtilities.addSTDMinuteSession(customerBilling);
 		BillingUtilities.addInternetMinuteSession(customerBilling);
 		
-		PostpaidBillingEngine billingEngine = new PostpaidBillingEngine(customerBilling);
 		LocalDate startDate = LocalDate.now();
 		LocalDate endDate = LocalDate.now();
 		
-		double postpaidBill = billingEngine.processBilling(startDate, endDate);
+		double postpaidBill = customerBilling.processBilling(startDate, endDate);
 		
 		System.out.println("Postpaid Bill : " + postpaidBill);
 	}
