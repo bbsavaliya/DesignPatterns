@@ -1,9 +1,9 @@
-package com.barclays.postpaid.builder;
+package com.design.postpaid.builder;
 
-import com.barclays.postpaid.composite.InternetData;
-import com.barclays.postpaid.composite.LocalMin;
-import com.barclays.postpaid.composite.RecharchPack;
-import com.barclays.postpaid.composite.STDMin;
+import com.design.postpaid.composite.InternetData;
+import com.design.postpaid.composite.LocalMin;
+import com.design.postpaid.composite.RecharchPack;
+import com.design.postpaid.composite.STDMin;
 
 public interface Builder {
 	public Builder setBasePrice(double basePrice);

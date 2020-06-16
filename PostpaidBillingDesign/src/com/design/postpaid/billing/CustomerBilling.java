@@ -1,11 +1,11 @@
-package com.barclays.postpaid.billing;
+package com.design.postpaid.billing;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.barclays.postpaid.composite.RecharchPack;
-import com.barclays.postpaid.composite.ValuePackComponent;
+import com.design.postpaid.composite.RecharchPack;
+import com.design.postpaid.composite.ValuePackComponent;
 
 public class CustomerBilling implements BillingEngine {
 	private final long customerId;

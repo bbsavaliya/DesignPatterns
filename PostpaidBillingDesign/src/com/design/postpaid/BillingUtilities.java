@@ -1,8 +1,8 @@
-package com.barclays.postpaid;
+package com.design.postpaid;
 
-import com.barclays.postpaid.billing.BillingTransaction;
-import com.barclays.postpaid.billing.CustomerBilling;
-import com.barclays.postpaid.composite.RechargeComponentType;
+import com.design.postpaid.billing.BillingTransaction;
+import com.design.postpaid.billing.CustomerBilling;
+import com.design.postpaid.composite.RechargeComponentType;
 
 public class BillingUtilities {
 	public static void addLocalMinuteSession (CustomerBilling customerBilling) {

@@ -1,4 +1,4 @@
-package com.barclays.postpaid.billing;
+package com.design.postpaid.billing;
 
 import java.util.function.DoubleConsumer;
 

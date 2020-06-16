@@ -1,11 +1,11 @@
-package com.barclays.postpaid;
+package com.design.postpaid;
 
 import java.time.LocalDate;
 
-import com.barclays.postpaid.billing.CustomerBilling;
-import com.barclays.postpaid.builder.RechargePackBuilder;
-import com.barclays.postpaid.builder.RechargePackDirector;
-import com.barclays.postpaid.composite.RecharchPack;
+import com.design.postpaid.billing.CustomerBilling;
+import com.design.postpaid.builder.RechargePackBuilder;
+import com.design.postpaid.builder.RechargePackDirector;
+import com.design.postpaid.composite.RecharchPack;
 
 public class PostpaidBillingEngineTest {
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.barclays.postpaid.composite;
+package com.design.postpaid.composite;
 
 public class STDMin extends ValuePackComponent {
 	private final int stdMins;

@@ -1,9 +1,9 @@
-package com.barclays.postpaid.billing;
+package com.design.postpaid.billing;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
-import com.barclays.postpaid.composite.RechargeComponentType;
+import com.design.postpaid.composite.RechargeComponentType;
 
 public class BillingTransaction {
 	private RechargeComponentType rechargeComponentType;
